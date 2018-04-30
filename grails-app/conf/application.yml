@@ -25,6 +25,13 @@ spring:
     groovy:
         template:
             check-template-location: false
+foo:
+  bar:
+    hello: Mighty Messenger
+    max:
+      hellos: 5
+    greeting: Hi Ho
+    path: '${PATH}'
 
 server:
   port: 8888
@@ -111,10 +118,14 @@ environments:
         dataSource:
             dbCreate: create-drop
             url: jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
+        spec:
+          prop: This is for dev env
     test:
         dataSource:
             dbCreate: update
             url: jdbc:h2:mem:testDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
+        spec:
+            prop: This is for test env
     production:
         dataSource:
             dbCreate: none
@@ -137,3 +148,5 @@ environments:
                 testOnReturn: false
                 jdbcInterceptors: ConnectionState
                 defaultTransactionIsolation: 2 # TRANSACTION_READ_COMMITTED
+        spec:
+            prop: This is for dev env
